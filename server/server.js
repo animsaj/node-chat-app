@@ -12,6 +12,15 @@ app.use(express.static(path.join(__dirname, "../public")));
 
 io.on("connection", socket => {
   console.log("New user connected");
+  socket.emit("newMessage", {
+    from: "Koula",
+    text: "guf guf",
+    timestamp: new Date(Date.now()).toLocaleString()
+  });
+  socket.on("createMessage", newMessage => {
+    newMessage.timestamp = new Date(Date.now()).toLocaleString();
+    socket.emit("newMessage", newMessage);
+  });
   socket.on("disconnect", () => {
     console.log("User disconnected");
   });
