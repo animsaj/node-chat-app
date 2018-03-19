@@ -4,16 +4,25 @@
 <head>
     <title>Node Chat App</title>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
-<body>
-    <p>Welcome to a Node Chat App</p>
-    <ol id="message-list"></ol>
-    <form id="message-form">
-        <input type="text" id="message">
-        <button id="send-message">Send</button>
-    </form>
-    <button id="locationBtn">Send Location</button>
+<body class="chat">
+    <div class="chat__sidebar">
+        <h3>People</h3>
+        <div id="users"></div>
+    </div>
+    <div class="chat__main">
+        <ol id="message-list" class="chat__messages"></ol>
+        <div class="chat__footer">
+            <form id="message-form">
+                <input type="text" id="message" placeholder="Message" autocomplete="off" autofocus>
+                <button id="send-message">Send</button>
+            </form>
+            <button id="locationBtn">Send location</button>
+        </div>
+    </div>
+
     <script src="/socket.io/socket.io.js"></script>
     <script src="./js/jquery-3.3.1.min.js"></script>
     <script src="/js/index.js"></script>

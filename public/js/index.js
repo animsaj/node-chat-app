@@ -26,10 +26,13 @@ socket.on("connect", function() {
     });
     jQuery("#message").val("");
   });
-  jQuery("#locationBtn").on("click", function() {
+  var locationBtn = jQuery("#locationBtn");
+  locationBtn.on("click", function() {
     if ("geolocation" in navigator) {
+      locationBtn.attr("disabled", "disabled").text("Sending location...");
       navigator.geolocation.getCurrentPosition(
         function(position) {
+          locationBtn.removeAttr("disabled").text("Send location");
           socket.emit("locationMessage", {
             from: "User",
             latitude: position.coords.latitude,
@@ -37,6 +40,7 @@ socket.on("connect", function() {
           });
         },
         function() {
+          locationBtn.removeAttr("disabled").text("Send location");
           return alert("Unable to fetch your position");
         }
       );
