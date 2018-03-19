@@ -8,7 +8,14 @@
 
 <body>
     <p>Welcome to a Node Chat App</p>
+    <ol id="message-list"></ol>
+    <form id="message-form">
+        <input type="text" id="message">
+        <button id="send-message">Send</button>
+    </form>
+    <button id="locationBtn">Send Location</button>
     <script src="/socket.io/socket.io.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
     <script src="/js/index.js"></script>
 </body>
 
