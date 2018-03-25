@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const socketIO = require("socket.io");
 const http = require("http");
+const moment = require('moment');
 
 const { generateMessage, generateLocationMessage } = require("./utils/message");
 
@@ -21,7 +22,7 @@ io.on("connection", socket => {
   );
   socket.on("createMessage", message => {
     newMessage = {
-      createdAt: new Date(Date.now()).toLocaleString(),
+      createdAt: moment().valueOf(),
       from: message.from,
       text: message.text
     };
